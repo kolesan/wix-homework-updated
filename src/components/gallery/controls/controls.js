@@ -25,10 +25,20 @@ function galleryControlsElement() {
 
 function logo() {
   return element({
-    tag: "img",
-    classes: "wix_logo",
+    tag: "a",
+    classes: "gallery__controls__item wix_logo",
     attributes: {
-      src: "../../resources/images/wix-white-horizontal-winking.svg"
-    }
-  })
+      href: "https://wix.com",
+      target: "_blank"
+    },
+    children: [
+      element({
+        tag: "img",
+        classes: "wix_logo__image",
+        attributes: {
+          src: "../../resources/images/wix-white-horizontal-winking.svg"
+        }
+      })
+    ]
+  });
 }

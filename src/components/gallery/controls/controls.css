@@ -12,24 +12,30 @@
     --font-color: rgba(255, 255, 255, 0.85);
     --font-size: 1rem;
     --font-family: 'Fira Sans', sans-serif;
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    color: var(--font-color);
-}
-
-.gallery__controls__item {
-    margin: 0 1rem;
 
     font-family: var(--font-family);
     font-size: var(--font-size);
     color: var(--font-color);
+    text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 0.13rem;
+}
+.gallery__controls__item {
+    margin-right: 1rem;
+}
+.gallery__controls__item:first-child {
+    margin-left: 1rem;
+}
 
-    text-transform: uppercase;
+
+
+.wix_logo__image {
+    height: 50px;
+    padding: 0.25rem;
 }
 
 .wix_logo {
-    height: 50px;
-    padding: 0.25rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
