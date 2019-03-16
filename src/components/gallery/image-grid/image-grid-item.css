@@ -1,4 +1,8 @@
 .image_grid__item {
+    --font-size: 2.5rem;
+}
+
+.image_grid__item {
     position: relative;
 
     display: flex;
@@ -8,7 +12,7 @@
     overflow: hidden;
 
     text-transform: uppercase;
-    font-size: 2.5rem;
+    font-size: var(--font-size);
     font-weight: bold;
     font-family: 'Fira Sans', sans-serif;
     letter-spacing: 0.3rem;
@@ -46,4 +50,15 @@
     text-align: center;
 
     user-select: none;
+}
+
+@media(min-resolution: 200dpi) {
+    .image_grid__item__title {
+        font-size: calc(var(--font-size) * 2);
+    }
+}
+@media(min-resolution: 200dpi) and (orientation: landscape) {
+    .image_grid__item__title {
+        font-size: calc(var(--font-size) + 1rem);
+    }
 }

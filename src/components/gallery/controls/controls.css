@@ -1,6 +1,10 @@
 .gallery__controls {
+    --controls-height: 50px;
+}
+
+.gallery__controls {
     width: 100%;
-    height: 50px;
+    height: var(--controls-height);
     background-color: #0f110f;
 
     display: flex;
@@ -16,7 +20,9 @@
     font-weight: 600;
     letter-spacing: 0.13rem;
 }
+
 .gallery__controls__item {
+    height: var(--controls-height);
     margin-right: 1rem;
 }
 .gallery__controls__item:first-child {
@@ -26,7 +32,7 @@
 
 
 .wix_logo__image {
-    height: 50px;
+    height: var(--controls-height);
     padding: 0.25rem;
 }
 
@@ -34,4 +40,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+@media(min-resolution: 200dpi) {
+    .gallery__controls {
+        --controls-height: 100px;
+        font-size: calc(var(--font-size) * 2);
+    }
+    .gallery__controls__item {
+        margin-right: 2rem;
+    }
+    .wix_logo__image {
+        height: calc(var(--controls-height) - 20px);
+    }
 }
