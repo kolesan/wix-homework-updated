@@ -38,9 +38,9 @@ function determineItemDimensions(image) {
 function sideRatioAdjust(dimensions, image) {
   let { width, height } = image;
   let ratio = width / height;
-  if (ratio > 1.2) {
+  if (ratio > 1.3) {
     return newDimensions({w: 2, h: dimensions.h});
-  } else if (ratio < 0.8) {
+  } else if (ratio < 0.7) {
     return newDimensions({w: dimensions.w, h: 2});
   }
   return Object.assign({}, dimensions);

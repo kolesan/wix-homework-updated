@@ -1,8 +1,4 @@
 .image_grid {
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    color: var(--font-color);
-
     border-radius: 2px;
 
     min-width: 450px;
@@ -15,10 +11,4 @@
     grid-gap: 0.4rem;
 
     overflow: hidden;
-}
-
-@media(max-width: 900px) {
-    .image_grid {
-        grid-gap: 0.35rem;
-    }
 }

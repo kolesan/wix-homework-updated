@@ -1,6 +1,12 @@
 .image_grid__item {
     position: relative;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
     text-transform: uppercase;
     font-size: 2.5rem;
     font-weight: bold;
@@ -12,12 +18,6 @@
                  -1px  1px 2px #494949,
                   1px -1px 2px #494949,
                   1px  1px 2px #494949;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
 }
 
 .image_grid__item__img {

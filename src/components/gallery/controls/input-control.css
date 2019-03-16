@@ -20,10 +20,8 @@
 }
 
 .gallery__controls__input.input:hover {
-    /*border-bottom: 2px solid gray;*/
     opacity: 1;
 }
 .gallery__controls__input.input:focus-within {
-    /*border-bottom: 2px solid gray;*/
     opacity: 1;
 }

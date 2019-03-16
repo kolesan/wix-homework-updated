@@ -1,16 +1,10 @@
-import { decorateElement } from '../../../utils/html-utils.js';
 import inputControlComponent from './input-control.js'
 
-export default function inst() {
-  let element = searchControlElement("search");
+export default function inst(onInput) {
+  let searchControl = inputControlComponent("search", onInput);
   return Object.freeze({
     get element() {
-      return element;
+      return searchControl.element;
     }
   });
-}
-
-function searchControlElement(label) {
-  let inputControl = inputControlComponent(label);
-  return inputControl.element;
 }

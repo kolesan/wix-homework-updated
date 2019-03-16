@@ -1,16 +1,15 @@
-import { element } from '../../../utils/html-utils.js';
+import { element, removeChildNodes } from '../../../utils/html-utils.js';
 import imageGridItem from './image-grid-item.js';
 import newGrid from '../../../utils/grid.js';
-import { removeChildNodes } from '../../../utils/html-utils.js';
 
 export default function inst() {
-  let imageGrid = imageGridElement();
+  let element = imageGridElement();
   return Object.freeze({
     get element() {
-      return imageGrid
+      return element
     },
     clear() {
-      removeChildNodes(imageGrid);
+      removeChildNodes(element);
     },
     display(images) {
       this.clear();
@@ -27,7 +26,7 @@ export default function inst() {
   });
 
   function displayItem(item) {
-    imageGrid.appendChild(item.element);
+    element.appendChild(item.element);
   }
 }
 
