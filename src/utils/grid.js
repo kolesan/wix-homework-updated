@@ -2,31 +2,36 @@ import { isNormalPositiveNumber } from './math-utils.js';
 import optional from './optional.js';
 import { arrayOfSize } from './utils.js';
 
-export default function inst(gridWidth = 2, gridHeight = 100) {
-  validateGrid(gridWidth, gridHeight);
+export default function inst(gridWidth = 2) {
+  validateGrid(gridWidth);
 
-  let grid = createEmptyGrid(gridWidth, gridHeight);
+  let grid = createEmptyGrid(gridWidth, 1);
 
   return Object.freeze({
     position(w, h) {
-      validateItem(w, h, gridWidth, gridHeight);
+      validateItem(w, h, gridWidth);
 
       return findSpotThatCanFit(w, h)
         .ifPresent(spot => {
           occupy(spot.x, spot.y, w, h);
-          console.log(grid);
           return spot;
         })
-        .orElseReturn({});
+        .orElse(() => {
+          throw Error("Should not happen with an endless grid");
+        });
     }
   });
+
+  function gridHeight() {
+    return grid.length;
+  }
 
   function findSpotThatCanFit(w, h) {
     return findCell({
       x: 0,
       y: 0,
       w: gridWidth,
-      h: gridHeight,
+      h: gridHeight() + 1,
       predicate: (x, y) => canFit(x, y, w, h)
     });
   }
@@ -37,7 +42,8 @@ export default function inst(gridWidth = 2, gridHeight = 100) {
     }).isEmpty();
   }
   function isOccupiedOrOutside(x, y) {
-    return !grid[y][x];
+    let row = grid[y];
+    return row !== undefined && !row[x];
   }
 
   function occupy(x, y, w, h) {
@@ -46,16 +52,22 @@ export default function inst(gridWidth = 2, gridHeight = 100) {
     });
   }
   function occupyCell(x, y) {
+    if (grid[y] === undefined) {
+      grid[y] = newRow(gridWidth);
+    }
+
     grid[y][x] = false;
   }
 }
 
-
+function newRow(w) {
+  return arrayOfSize(w, true);
+}
 
 function createEmptyGrid(w, h) {
   let rows = [];
   for(let i = 0; i < h; i++) {
-    rows.push(arrayOfSize(w, true));
+    rows.push(newRow(w));
   }
   return rows;
 }
@@ -81,14 +93,14 @@ function findCell({x, y, w, h, predicate}) {
 
 
 
-function validateGrid(w, h) {
-  if (!isNormalPositiveNumber(w) || !isNormalPositiveNumber(h)) {
-    throw Error(`Invalid grid dimensions ${{w, h}}`);
+function validateGrid(w) {
+  if (!isNormalPositiveNumber(w)) {
+    throw Error(`Invalid grid dimensions ${{w}}`);
   }
 }
 
-function validateItem(w, h, gridWidth, gridHeight) {
-  if (w > gridWidth || h > gridHeight) {
-    throw Error(`Item with dimensions ${{w, h}} won't fit on a grid ${{w: gridWidth, h: gridHeight}}`);
+function validateItem(w, h, gridWidth) {
+  if (w > gridWidth) {
+    throw Error(`Item with dimensions ${{w, h}} won't fit on a grid with width ${{w: gridWidth}}`);
   }
 }

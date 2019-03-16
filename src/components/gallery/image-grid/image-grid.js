@@ -11,17 +11,10 @@ export default function inst() {
     display(images) {
       let gridItemComponents = images.map(imageGridItem);
 
-      let grid = newGrid(3, images.length);
+      let grid = newGrid(3);
 
       for(let item of gridItemComponents) {
-        let position = grid.position(item.w, item.h);
-        let { x, y } = position;
-
-        if (x === undefined) {
-          console.error("Can not fit all items on the grid");
-          break;
-        }
-
+        let { x, y } = grid.position(item.w, item.h);
         item.position(x, y);
         displayItem(item);
       }
