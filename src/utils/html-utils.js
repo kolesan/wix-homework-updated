@@ -45,3 +45,11 @@ export function removeElement(node) {
     node.parentNode.removeChild(node);
   }
 }
+
+export function removeChildNodes(parent, predicate = ()=>true) {
+  Array.from(parent.children).forEach(child => {
+    if (predicate(child)) {
+      parent.removeChild(child);
+    }
+  });
+}

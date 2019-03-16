@@ -1,6 +1,7 @@
 import { element } from '../../../utils/html-utils.js';
 import imageGridItem from './image-grid-item.js';
 import newGrid from '../../../utils/grid.js';
+import { removeChildNodes } from '../../../utils/html-utils.js';
 
 export default function inst() {
   let imageGrid = imageGridElement();
@@ -8,16 +9,20 @@ export default function inst() {
     get element() {
       return imageGrid
     },
+    clear() {
+      removeChildNodes(imageGrid);
+    },
     display(images) {
-      let gridItemComponents = images.map(imageGridItem);
+      this.clear();
+      let grid = newGrid(4);
 
-      let grid = newGrid(3);
-
-      for(let item of gridItemComponents) {
-        let { x, y } = grid.position(item.w, item.h);
-        item.position(x, y);
-        displayItem(item);
-      }
+      images
+        .map(imageGridItem)
+        .forEach(gridItem => {
+          let { x, y } = grid.position(gridItem.w, gridItem.h);
+          gridItem.position(x, y);
+          displayItem(gridItem);
+        });
     }
   });
 
