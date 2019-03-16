@@ -1,7 +1,7 @@
 {
   "name": "wix-homework-facelift",
   "version": "1.0.0",
-  "description": "My attempt at modernizing wix js developer candidate task I had to do before the interview",
+  "description": "My attempt at modernizing 'wix js developer candidate task' I had to do before the interview",
   "main": "./src/index.js",
   "scripts": {
     "start": "live-server src",

@@ -1,0 +1,32 @@
+.gallery__controls__input {
+
+}
+.gallery__controls__input.input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--font-color);
+    opacity: 0.7;
+
+    margin-left: 0.25rem;
+
+    outline: none;
+
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--font-color);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+
+
+    transition: opacity ease-in-out 150ms;
+}
+
+.gallery__controls__input.input:hover {
+    /*border-bottom: 2px solid gray;*/
+    opacity: 1;
+}
+.gallery__controls__input.input:focus-within {
+    /*border-bottom: 2px solid gray;*/
+    opacity: 1;
+}
