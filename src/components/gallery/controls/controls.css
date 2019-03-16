@@ -9,10 +9,6 @@
 
     box-shadow: #0f110f 1px 0px 2px;
 
-    --font-color: rgba(255, 255, 255, 0.85);
-    --font-size: 1rem;
-    --font-family: 'Fira Sans', sans-serif;
-
     font-family: var(--font-family);
     font-size: var(--font-size);
     color: var(--font-color);

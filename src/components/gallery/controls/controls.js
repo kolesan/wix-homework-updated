@@ -1,4 +1,4 @@
-import { element } from '../../../utils/HtmlUtils.js';
+import { element } from '../../../utils/html-utils.js';
 import searchControlComponent from './search-control.js';
 
 export default function inst() {

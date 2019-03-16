@@ -1,4 +1,18 @@
 .gallery {
     width: 100%;
     height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery > .gallery__controls {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.gallery > .image_grid {
+    margin-top: 0.3rem;
 }

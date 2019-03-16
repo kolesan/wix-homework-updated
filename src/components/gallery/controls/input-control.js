@@ -1,4 +1,4 @@
-import { element, textNode } from '../../../utils/HtmlUtils.js';
+import { element, textNode } from '../../../utils/html-utils.js';
 
 export default function inst(label) {
   let element = inputControlElement(label);

@@ -1,11 +1,15 @@
-import { element } from "../../utils/HtmlUtils.js";
-import galleryControls from "./controls/controls.js";
-import galleryImageList from "./image-list/image-list.js";
+import { element, decorateElement } from '../../utils/html-utils.js';
+import galleryControls from './controls/controls.js';
+import galleryImageGrid from './image-grid/image-grid.js';
+import staticDb from '../../resources/static-images-db.js';
 
 export default function inst(imageFinder) {
   let controls = galleryControls();
-  let imageList = galleryImageList();
-  let element = galleryElement(controls.element);
+  let imageGrid = galleryImageGrid();
+
+  let element = galleryElement(controls.element, imageGrid.element);
+
+  imageGrid.display(staticDb.slice(0, 30));
 
   return Object.freeze({
     search(query) {

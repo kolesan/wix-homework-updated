@@ -1,4 +1,4 @@
-window.DATA.staticImagesDb = [
+export default [
   {
     "id": "uHdLX6RiC3aTvpgsMDQROA--a",
     "url": "http://static.wix.com/media/f1fe62d47dde108e783c7ba04a5ff87f.wix_mp",

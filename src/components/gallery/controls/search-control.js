@@ -1,4 +1,4 @@
-import { decorateElement } from '../../../utils/HtmlUtils.js';
+import { decorateElement } from '../../../utils/html-utils.js';
 import inputControlComponent from './input-control.js'
 
 export default function inst() {
