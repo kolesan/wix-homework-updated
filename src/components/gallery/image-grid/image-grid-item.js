@@ -4,30 +4,26 @@ import { curry, pipe } from '../../../utils/functional-utils.js';
 
 export default function inst(image) {
   let imageGridItem = imageGridItemElement(image);
-  let dimensions = determineItemDimensions(image);
+
+  pipe(image,
+    determineItemDimensions,
+    positionItem
+  );
+
   return Object.freeze({
     get element() {
       return imageGridItem;
     },
-    get w() {
-      return dimensions.w;
-    },
-    get h() {
-      return dimensions.h;
-    },
-    position(x, y) {
-      const { w, h } = dimensions;
-      imageGridItem.style.gridRowStart = y + 1;
-      imageGridItem.style.gridColumnStart = x + 1;
-      imageGridItem.style.gridRowEnd = y + h + 1;
-      imageGridItem.style.gridColumnEnd = x + w + 1;
-    }
   });
+
+  function positionItem({w, h}) {
+    imageGridItem.style.gridRowEnd = `span ${h}`;
+    imageGridItem.style.gridColumnEnd = `span ${w}`;
+  }
 }
 
 function determineItemDimensions(image) {
-  return pipe(
-    newDimensions({w: 1, h: 1}),
+  return pipe(newDimensions({w: 1, h: 1}),
     curry(sideRatioAdjust, image),
     curry(longWordInTitleAdjust, image)
   );
