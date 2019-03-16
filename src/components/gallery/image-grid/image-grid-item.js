@@ -1,5 +1,6 @@
 import { element } from '../../../utils/html-utils.js';
-import { dimensions } from '../../../utils/utils.js';
+import { dimensions as newDimensions } from '../../../utils/utils.js';
+import { curry, pipe } from '../../../utils/functional-utils.js';
 
 export default function inst(image) {
   let imageGridItem = imageGridItemElement(image);
@@ -25,18 +26,34 @@ export default function inst(image) {
 }
 
 function determineItemDimensions(image) {
-  const distance = 300;
-  let { width, height } = image;
-  let dimensionsDiff = width - height;
-
-  if (dimensionsDiff > distance) {
-    return dimensions({w: 2, h: 1});
-  } else if (dimensionsDiff < -distance) {
-    return dimensions({w: 1, h: 2});
-  }
-
-  return dimensions({w: 1, h: 1});
+  return pipe(
+    newDimensions({w: 1, h: 1}),
+    curry(sideRatioAdjust, image),
+    curry(longWordInTitleAdjust, image)
+  );
 }
+
+
+
+function sideRatioAdjust(dimensions, image) {
+  let { width, height } = image;
+  let ratio = width / height;
+  if (ratio > 1.2) {
+    return newDimensions({w: 2, h: dimensions.h});
+  } else if (ratio < 0.8) {
+    return newDimensions({w: dimensions.w, h: 2});
+  }
+  return Object.assign({}, dimensions);
+}
+
+function longWordInTitleAdjust(dimensions, image) {
+  if (image.title.split(" ").some(word => word.length > 7)) {
+    return newDimensions({ w: 2, h: dimensions.h });
+  }
+  return Object.assign({}, dimensions);
+}
+
+
 
 function imageGridItemElement(image) {
   return element({

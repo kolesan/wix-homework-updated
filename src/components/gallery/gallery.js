@@ -9,7 +9,7 @@ export default function inst(imageFinder) {
 
   let element = galleryElement(controls.element, imageGrid.element);
 
-  imageGrid.display(staticDb.slice(0, 30));
+  imageGrid.display(staticDb);
 
   return Object.freeze({
     search(query) {
