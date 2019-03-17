@@ -5,6 +5,7 @@ describe('Task 4 - Multiple requests', () => {
   const imageFinder = newImageFinder();
 
   it('accepts multiple requests and', () => {
+    expect(true).toBe(false);
     let result1 = imageFinder.search('dog', 'flickr');
     let result2 = imageFinder.search('cat', 'flickr');
 

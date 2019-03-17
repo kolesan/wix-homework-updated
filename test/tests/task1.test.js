@@ -1,16 +1,18 @@
 import newImageFinder from '../../src/services/image-finder.js';
 
-describe('Task 1 - Image Finder static data search', () => {
+describe('Task 1 - Static data search', () => {
 
   const imageFinder = newImageFinder();
 
-  it(`returns a query object which has a property 'query' == original search query`, () => {
+  test(`image finder returns an object with a property 'query' - original search query`, () => {
     const result = imageFinder.search('dog');
 
     expect(result.query).toBe('dog');
   });
 
-  it(`returns a query object which has a property 'images' == array of image objects '[{id, url, title}...]'`, () => {
+  test(`image finder returns an object
+        with a property 'images' - array of image objects '[{id, url, title},...]'`,
+  () => {
     const result = imageFinder.search('dog');
 
     expect(result.images).toEqual([
