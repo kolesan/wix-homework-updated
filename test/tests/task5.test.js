@@ -1,13 +1,5 @@
 import newImageFinder from '../../src/services/image-finder.js';
 
-const description = `
-  <p>
-     Now that <code>search()</code> return results asynchronously,
-     it might cause unwanted old results to be returned before or <strong>after</strong> newer queries.
-     Change <code>search()</code> so that it will cancel previous searches when a new query is executed.
-  </p>
-`;
-
 describe('Task 5 - Nuts & Bolts', function(){
 
   const imageFinder = newImageFinder();

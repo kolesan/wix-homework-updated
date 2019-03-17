@@ -1,30 +1,6 @@
 import newImageFinder from '../../src/services/image-finder.js';
 
 describe('Task 1 - ImageFinder static data search', () => {
-  
-  const description =`
-    <p>Modify <code>ImageFinder.search()</code> to search the title field of items in the global variable <code>DATA.staticImagesDb</code>. You may view the data in "static-images-db.js"</p>' +
-       <p>Items which <strong>contain</strong> the search query in the <code>title</code> field should be included.</p>
-          <p>Example: The query "veg" should return the following:</p>
-           <pre>
-           {<br/>
-               query:"veg", <br/>
-               images:[ <br/>
-                   { <br/>
-                       id: "OE8CVzFzzh;5_sTOzzBihQ--a", <br/>
-                       url: "http://static.wix.com/media/9f980c8bd27279a71406c1bb10916190.wix_mp", <br/>
-                       title: "veggies" <br/>
-                   }, <br/>
-                   { <br/>
-                       id: "PxtCbLD6RKrRyGGyKdwJ5w--a", <br/>
-                       url: "http://static.wix.com/media/a0cb4084e9c514ae7ca42143fbedf84a.wix_mp", <br/>
-                       title: "veggies 2" <br/>
-                   } <br/>
-               ] <br/>
-           }
-           </pre>
-      <li>Return results in the above format</li>
-      <li>Do not change <code>Gallery</code> for <u>this task</u></li>`;
 
   const imageFinder = newImageFinder();
 

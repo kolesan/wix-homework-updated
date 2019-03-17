@@ -1,18 +1,5 @@
 import newImageFinder from '../../src/services/image-finder.js';
 
-const desription = `
-      <p>
-        Add a flickr search module to the system using the following credentials:<br/>
-        <code>Flickr API<br/>
-              api_key: 'b394136d5dde8d9d0d4f8fc6685386e2'
-        </code>
-      </p>
-      <p>
-        <li>Don't reduce flickr results amount (100)</li>
-        <li><strong>Bonus</strong> - Add a drop down menu in gallery to select a search module (static / flickr).</li>
-      </p>
-  `;
-
 describe('Task 3 - Async Flickr Module', () => {
 
   const imageFinder = newImageFinder();

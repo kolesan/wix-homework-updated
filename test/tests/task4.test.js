@@ -1,14 +1,5 @@
 import newImageFinder from '../../src/services/image-finder.js';
 
-const description = `
-    <p>Add functionality to your <code>search()</code> to be able to accept requests from multiple galleries and
-       route the search results to the appropriate gallery instance.
-    </p>
-    <li>
-      <p><strong>Bonus</strong> - Add a second functioning gallery</p>
-    </li>
-  `;
-
 describe('Task 4 - Multiple requests', () => {
 
   const imageFinder = newImageFinder();
