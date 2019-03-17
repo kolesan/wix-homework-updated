@@ -4,7 +4,7 @@
   "description": "My attempt at modernizing 'wix js developer candidate task' I had to do before the interview",
   "main": "./src/index.js",
   "scripts": {
-    "start": "npm-run-all -p -l startSrcServer startTestResultsServer testWatch",
+    "start": "npm-run-all -p -l startSrcServer testWatch startTestResultsServer",
     "startSrcServer": "live-server src",
     "startTestResultsServer": "live-server test --port=8081",
     "test": "jest",
