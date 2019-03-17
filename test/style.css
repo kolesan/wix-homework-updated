@@ -52,6 +52,15 @@ strong {
     color: white;
 }
 
+a {
+    color: #e24466;
+    text-decoration: none;
+    font-size: calc(var(--font-size) + 2px);
+    letter-spacing: 0.04rem;
+}
+a:hover {
+    text-decoration: underline;
+}
 
 .tasks {
     min-width: 350px;
