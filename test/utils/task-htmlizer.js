@@ -1,24 +1,16 @@
 function taskToHtml(task) {
   let testHtmls = task.tests.map(testToHtml);
   return `
-    <li class="task">
+    <li class="task ${task.failed ? 'failed' : 'passed'}">
       <span class="task__title">${task.title}</span>
       <div class="task__description">${task.description}</div>
-      <span class="task__tests__title">Individual test results: </span>
+      <span class="task__tests__title">Test results: </span>
       <ul class="task__tests">
         ${testHtmls.join("")}
       </ul>
     </li>
   `;
 }
-
-
-// <div class="task__tests">
-//   <span class="task__tests__title">Individual test results: </span>
-// <ul class="task__tests">
-//   ${testHtmls.join()}
-//   </ul>
-//   </div>
 
 function testToHtml(test) {
   return `

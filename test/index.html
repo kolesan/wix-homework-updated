@@ -10,7 +10,7 @@
     <body>
       <ul class="tasks">
         
-    <li class="task">
+    <li class="task failed">
       <span class="task__title">Task 1 - Image Finder static data search</span>
       <div class="task__description"><p>
   Modify <code>ImageFinder.search()</code>
@@ -41,7 +41,7 @@
 }
 </pre>
 <p>Do not change <code>Gallery</code> for <u>this task</u></p></div>
-      <span class="task__tests__title">Individual test results: </span>
+      <span class="task__tests__title">Test results: </span>
       <ul class="task__tests">
         
     <li class="task__tests__test failed">returns a query object which has a property 'query' == original search query</li>
@@ -51,7 +51,7 @@
       </ul>
     </li>
   
-    <li class="task">
+    <li class="task failed">
       <span class="task__title">Task 2 - Search Modules</span>
       <div class="task__description"><p>Modify your implementation of <code>ImageFinder</code> to include a way of adding <strong>search modules</strong>.
   Each module accepts a search query and returns the search results in the same format as task 1.</p>
@@ -67,7 +67,7 @@
 
 </pre>
 </div>
-      <span class="task__tests__title">Individual test results: </span>
+      <span class="task__tests__title">Test results: </span>
       <ul class="task__tests">
         
     <li class="task__tests__test failed">throw error for unknown module</li>
@@ -75,7 +75,7 @@
       </ul>
     </li>
   
-    <li class="task">
+    <li class="task failed">
       <span class="task__title">Task 3 - Async Flickr Module</span>
       <div class="task__description"><p>
   Add a flickr search module to the system using the following credentials:<br/>
@@ -83,11 +83,9 @@
     api_key: 'b394136d5dde8d9d0d4f8fc6685386e2'
   </code>
 </p>
-<p>
-<li>Don't reduce flickr results amount (100)</li>
-<li><strong>Bonus</strong> - Add a drop down menu in gallery to select a search module (static / flickr).</li>
-</p></div>
-      <span class="task__tests__title">Individual test results: </span>
+<p>Don't reduce flickr results amount (100)</p>
+<p><strong>Bonus</strong> - Add a drop down menu in gallery to select a search module (static / flickr).</p></div>
+      <span class="task__tests__title">Test results: </span>
       <ul class="task__tests">
         
     <li class="task__tests__test failed">returns a proper result object with query and images properties</li>
@@ -95,15 +93,13 @@
       </ul>
     </li>
   
-    <li class="task">
+    <li class="task failed">
       <span class="task__title">Task 4 - Multiple requests</span>
       <div class="task__description"><p>Add functionality to your <code>search()</code> to be able to accept requests from multiple galleries and
   route the search results to the appropriate gallery instance.
 </p>
-<li>
-  <p><strong>Bonus</strong> - Add a second functioning gallery</p>
-</li></div>
-      <span class="task__tests__title">Individual test results: </span>
+<p><strong>Bonus</strong> - Add a second functioning gallery</p></div>
+      <span class="task__tests__title">Test results: </span>
       <ul class="task__tests">
         
     <li class="task__tests__test failed">accepts multiple requests and</li>
@@ -111,14 +107,14 @@
       </ul>
     </li>
   
-    <li class="task">
+    <li class="task passed">
       <span class="task__title">Task 5 - Nuts & Bolts</span>
       <div class="task__description"><p>
   Now that <code>search()</code> return results asynchronously,
   it might cause unwanted old results to be returned before or <strong>after</strong> newer queries.
   Change <code>search()</code> so that it will cancel previous searches when a new query is executed.
 </p></div>
-      <span class="task__tests__title">Individual test results: </span>
+      <span class="task__tests__title">Test results: </span>
       <ul class="task__tests">
         
     <li class="task__tests__test passed">ignores older requests if they arrive after the newer ones</li>
