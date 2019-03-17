@@ -3,7 +3,7 @@ const { processFullPath } = require('./path-utils');
 
 
 
-function parseJestResult(jestResult) {
+function parseJestResults(jestResult) {
   return jestResult.testResults
     .map(toSuiteResult)
 }
@@ -52,5 +52,5 @@ function suiteFailed(suite) {
 
 
 module.exports = {
-  parseJestResult
+  parseJestResults
 };

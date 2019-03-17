@@ -1,4 +1,6 @@
-const { parseJestResult } = require('./utils/jest-result-parser');
+const { writeFile } = require('./utils/file-utils');
+const { parseJestResults } = require('./utils/jest-result-parser');
+const { taskToHtml } = require('./utils/task-htmlizer');
 
 class JestSummaryReporter {
   constructor(globalConfig, options) {
@@ -7,39 +9,43 @@ class JestSummaryReporter {
   }
 
   onRunComplete(contexts, results) {
-    let output = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <title>Test results</title>
-      </head>
-      <body>
-      <div>${results}</div>
-      </body>
-      </html>
-    `;
+    let tasks = parseJestResults(results);
+    // console.log(JSON.stringify(tasks, "", "  "));
+    let preparedTasks = prep(tasks);
+    let taskHtmls = preparedTasks.map(taskToHtml);
+    let htmlizedTasks = taskHtmls.join("");
+    let output = injectIntoResultFileTemplate(htmlizedTasks);
 
-    console.log(JSON.stringify(parseJestResult(results), "", "  "));
-
-    // fs.writeFile("./test/index.html", output, function(err) {
-    //   if(err) {
-    //     return console.log(err);
-    //   }
-    //
-    //   console.log("\n\nThe file was saved!");
-    // });
+    writeFile("./test/index.html", output);
   }
 }
 
-
-function prep(results) {
-  jestResults.testResults
-    .sort(bySuiteFileName)
+function injectIntoResultFileTemplate(htmlizedTasks) {
+  return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Test results</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <ul class="tasks">
+        ${htmlizedTasks}
+      </ul>
+    </body>
+    </html>
+  `;
 }
 
-function bySuiteFileName(a, b) {
-    return a.fullPath < b.fullPath;
+function prep(tasks) {
+  return tasks
+    .sort(byName)
+}
+
+function byName(a, b) {
+    return a.name > b.name;
 }
 
 module.exports = JestSummaryReporter;

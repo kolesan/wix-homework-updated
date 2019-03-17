@@ -1,6 +1,6 @@
 import newImageFinder from '../../src/services/image-finder.js';
 
-describe('Task 1 - ImageFinder static data search', () => {
+describe('Task 1 - Image Finder static data search', () => {
 
   const imageFinder = newImageFinder();
 
