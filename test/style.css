@@ -85,10 +85,13 @@ a:hover {
 
 
 .task.passed {
-    color: #00af00;
+    margin-top: 1.5rem;
 }
 .task.passed > :not(.task__title){
     display: none;
+}
+.task.passed > .task__title {
+    color: #00af00;
 }
 .task.passed > .task__title::after {
     color: #00af00;
@@ -99,6 +102,16 @@ a:hover {
 
 .task.failed > .task__title {
     color: red;
+}
+
+.task.pending {
+    color: #c0c0c0;
+}
+.task.pending > .task__title {
+    color: #c0c0c0;
+}
+.task.pending > :not(.task__title){
+    display: none;
 }
 
 

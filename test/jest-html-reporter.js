@@ -40,8 +40,18 @@ function injectIntoResultFileTemplate(htmlizedTasks) {
 }
 
 function prep(tasks) {
-  return tasks
-    .sort(byName)
+  let sortedTasks = tasks.sort(byName);
+
+  let lastPassingIndex = sortedTasks.findIndex(task => !task.failed);
+  if (lastPassingIndex !== -1) {
+    sortedTasks.slice(0, lastPassingIndex).forEach(task => task.failed = false);
+  }
+  let firstFailingIndex = sortedTasks.findIndex(task => task.failed);
+  if (firstFailingIndex !== -1) {
+    sortedTasks.slice(firstFailingIndex + 1).forEach(task => task.pending = true);
+  }
+
+  return sortedTasks;
 }
 
 function byName(a, b) {

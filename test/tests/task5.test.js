@@ -5,6 +5,7 @@ describe('Task 5 - Nuts & Bolts', function(){
   const imageFinder = newImageFinder();
 
   it('ignores older requests if they arrive after the newer ones', function(){
+    expect(true).toBe(false);
     // let results = [];
     //
     // imageFinder.search('dog', 'flickr')

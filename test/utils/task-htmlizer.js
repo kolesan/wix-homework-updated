@@ -1,7 +1,7 @@
 function taskToHtml(task) {
   let testHtmls = task.tests.map(testToHtml);
   return `
-    <li class="task ${task.failed ? 'failed' : 'passed'}">
+    <li class="task ${task.failed ? 'failed' : 'passed'} ${task.pending ? 'pending' : ''}">
       <span class="task__title">${task.title}</span>
       <div class="task__description">${task.description}</div>
       <span class="task__tests__title">Test results: </span>
