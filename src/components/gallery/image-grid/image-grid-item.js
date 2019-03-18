@@ -10,6 +10,8 @@ export default function inst(image) {
     positionItem
   );
 
+  markSuperLongTitledItem(image, imageGridItem);
+
   return Object.freeze({
     get element() {
       return imageGridItem;
@@ -25,10 +27,16 @@ export default function inst(image) {
 function determineItemDimensions(image) {
   return pipe(newDimensions({w: 1, h: 1}),
     curry(sideRatioAdjust, image),
-    curry(longWordInTitleAdjust, image)
+    curry(longWordInTitleAdjust, image),
+    curry(longTitleAdjust, image)
   );
 }
 
+function markSuperLongTitledItem(image, imageGridItem) {
+  if (image.title.length > 25) {
+    imageGridItem.classList.add("super_long_titled");
+  }
+}
 
 
 function sideRatioAdjust(dimensions, image) {
@@ -45,6 +53,13 @@ function sideRatioAdjust(dimensions, image) {
 function longWordInTitleAdjust(dimensions, image) {
   if (image.title.split(" ").some(word => word.length > 7)) {
     return newDimensions({ w: 2, h: dimensions.h });
+  }
+  return Object.assign({}, dimensions);
+}
+
+function longTitleAdjust(dimensions, image) {
+  if (image.title.length > 15) {
+    return newDimensions({ w: 2, h: 2 });
   }
   return Object.assign({}, dimensions);
 }

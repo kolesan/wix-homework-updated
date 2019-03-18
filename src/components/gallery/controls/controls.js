@@ -1,11 +1,8 @@
 import { element } from '../../../utils/html-utils.js';
 
-export default function inst(searchControl) {
-  let element = galleryControlsElement(searchControl.element);
+export default function inst(...children) {
+  let element = galleryControlsElement(...children);
   return Object.freeze({
-    components: {
-      search: searchControl
-    },
     get element() {
       return element;
     }

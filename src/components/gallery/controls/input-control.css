@@ -33,7 +33,7 @@
 
 @media(min-resolution: 200dpi) {
     .gallery__controls__input.input {
-        font-size: calc(var(--font-size) * 2);
-        width: 250px;
+        font-size: calc(var(--font-size) * 1.5);
+        width: 200px;
     }
 }

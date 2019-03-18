@@ -1,21 +1,19 @@
-export default function inst() {
+export default function inst(...initialModules) {
+  let modules = new Map();
+  initialModules.forEach(module => modules.set(module.id, module));
+
   return Object.freeze({
-    search(query) {
-      return {
-        query: 'demo',
-        images: [
-          {
-            id:'1',
-            url:'http://image.shutterstock.com/display_pic_with_logo/347836/99127196/stock-photo-demo-icon-99127196.jpg',
-            title:'demo image 1'
-          },
-          {
-            id:'2',
-            url:'http://t2.ftcdn.net/jpg/00/30/42/21/400_F_30422159_lzSKGlGNX1YcKGuIFDiEyZbmCF3hacIB.jpg',
-            title:'demo image 2'
-          }
-        ]
-      };
+    search(query, moduleId) {
+      let module = modules.get(moduleId);
+      if (!module) {
+        throw Error(`Search module with id ${moduleId} not found.`);
+      }
+
+      return new Promise((resolve, reject) => {
+        module.search(query)
+          .then(images => resolve({query, images}))
+          .catch(error => reject(error));
+      });
     }
   });
 }
