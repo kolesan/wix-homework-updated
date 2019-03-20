@@ -21,7 +21,10 @@ function toSuiteResult(jestSuite) {
 }
 
 function taskTitle(tests) {
-  return tests[0].ancestorTitles[0];
+  if (tests.length > 0) {
+    return tests[0].ancestorTitles[0];
+  }
+  return "";
 }
 
 function taskDescription(name) {
@@ -33,6 +36,11 @@ function toFileName(pathString) {
   return path.file.match(/(.*?)\./)[1];
 }
 
+
+function testResults(jestSuite) {
+  return jestSuite.testResults.map(toTestResult);
+}
+
 function toTestResult(jestTestResult) {
   return {
     failed: jestTestResult.status === 'failed',
@@ -41,12 +49,9 @@ function toTestResult(jestTestResult) {
   }
 }
 
-function testResults(jestSuite) {
-  return jestSuite.testResults.map(toTestResult);
-}
 
 function suiteFailed(suite) {
-  return suite.numFailingTests > 0 || suite.failureMessage || false;
+  return Boolean(suite.numFailingTests > 0 || suite.failureMessage);
 }
 
 
