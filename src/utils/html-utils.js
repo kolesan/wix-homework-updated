@@ -35,17 +35,6 @@ export function textNode(v) {
   return document.createTextNode(v);
 }
 
-export function appendChildren(parent, ...children) {
-  children.forEach(child => parent.appendChild(child));
-  return children;
-}
-
-export function removeElement(node) {
-  if (node && node.parentNode) {
-    node.parentNode.removeChild(node);
-  }
-}
-
 export function removeChildNodes(parent, predicate = ()=>true) {
   Array.from(parent.children).forEach(child => {
     if (predicate(child)) {
