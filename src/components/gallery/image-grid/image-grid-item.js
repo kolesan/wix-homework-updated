@@ -1,6 +1,6 @@
 import { element } from '../../../utils/html-utils.js';
 import { dimensions as newDimensions } from '../../../utils/utils.js';
-import { curry, pipe } from '../../../utils/functional-utils.js';
+const { curry, pipe } = require('../../../utils/functional-utils');
 
 export default function inst(image) {
   let imageGridItem = imageGridItemElement(image);
